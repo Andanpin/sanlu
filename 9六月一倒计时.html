@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center;
+       }
+        .biaoti{
+            font-size: 35px;
+            color: #00ff05;
+            margin: 100px auto
+        }
+    </style>
+</head>
+<body>
+<div class="biaoti">距离六月一 大家的节日还有20天5小时23分54秒</div>
+<script>
+    window.onload=function () {
+        //1.获取所需要的标签
+        var biaoti = document.getElementsByClassName("biaoti")[0];
+       //2. 自定义将来的时间
+        var jianglaitime =  new Date("2018/6/14 1:12:24");
+       //3 开启定时器
+        setInterval(function () {
+          // 4 获取当前的时间
+        var dangqiantime = new Date();
+            // 5 获取时间戳
+       var dqsjc = dangqiantime.getTime();  // 5.1 获取当前的时间戳
+       var jlsjc = jianglaitime.getTime();  // 5.2 获取将来的时间戳
+       // 6 将来的时间戳减去现在的时间戳 等于剩余的时间戳
+       var sy = jlsjc - dqsjc;
+       // 7 把剩余的时间戳转化为秒 也就是毫秒转化为秒
+       var symiao = parseInt(sy / 1000);
+       // 8 将秒各转化为 天 时 分 秒
+            var d = size(parseInt(symiao / 3600 / 24));
+            var h = size(parseInt(symiao / 3600 % 24));
+            var m = size(parseInt(symiao / 60 % 60));
+            var s = size(parseInt(symiao % 60));
+          // 10 更改html中文字替换为动态真正的倒计时
+         biaoti.innerText = "距离六月一大家的节日还有"+ d +"天"+ h +"小时"+ m+"分"+s+"秒";
+        },1000);
+        // 9 添加判断 效果如 22:09:03
+        function size(num) { // 使用三目运算 size括号内的数如果大于等于10 数字不变 如果小于10 前面加一
+            // 效果如 22:09:03 上面调用size函数
+            return num >= 10 ? num : '0' + num;
+        }
+    }
+</script>
+</body>
+</html>
